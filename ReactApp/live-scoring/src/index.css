@@ -71,6 +71,14 @@ button:focus-visible {
   justify-content: center;
 }
 
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  flex-direction: row;
+  justify-content: left;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
