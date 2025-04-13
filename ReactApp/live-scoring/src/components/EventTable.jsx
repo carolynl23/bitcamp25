@@ -11,10 +11,14 @@ import '../index.css'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Theme from './Theme';
+
+const theme = Theme();
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.common.black,
+      backgroundColor: '#242424',
       color: theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {
@@ -54,8 +58,6 @@ function getEvents(id){
         createData('Abe', 7.9, 0),
         createData('Jay', 8.9, 2),
     ]
-    console.log(table);
-    console.log(table.sort(sortFunction));
     
     return(table.sort(sortFunction));
 }
@@ -72,29 +74,35 @@ export default function EventTable({eventid}) {
 
   return (
     <div>
-        <Card variant="outlined">{getEventName(eventid)}</Card>
-        <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="customized table">
-            <TableHead>
-            <StyledTableRow>
-                <StyledTableCell>Name</StyledTableCell>
-                <StyledTableCell align="right">Score</StyledTableCell>
-                <StyledTableCell align="right">Medal</StyledTableCell>
-            </StyledTableRow>
-            </TableHead>
-            <TableBody>
-            {rows.map((row) => (
-                <StyledTableRow key={row.name}>
-                <StyledTableCell component="th" scope="row">
-                    {row.name}
-                </StyledTableCell>
-                <StyledTableCell align="right">{row.score}</StyledTableCell>
-                <StyledTableCell align="right">{row.medal}</StyledTableCell>
-                </StyledTableRow>
-            ))}
-            </TableBody>
-        </Table>
-        </TableContainer>
+        <Card variant="outlined" sx={{background:theme.palette.secondary.main}}>
+            <CardContent>
+                <Typography theme={theme} style={{fontWeight: "bold"}}>
+                    {getEventName(eventid)}
+                </Typography>
+                <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="customized table">
+                    <TableHead>
+                    <StyledTableRow>
+                        <StyledTableCell>Name</StyledTableCell>
+                        <StyledTableCell align="right">Score</StyledTableCell>
+                        <StyledTableCell align="right">Medal</StyledTableCell>
+                    </StyledTableRow>
+                    </TableHead>
+                    <TableBody>
+                    {rows.map((row) => (
+                        <StyledTableRow key={row.name}>
+                        <StyledTableCell component="th" scope="row">
+                            {row.name}
+                        </StyledTableCell>
+                        <StyledTableCell align="right">{row.score}</StyledTableCell>
+                        <StyledTableCell align="right">{row.medal}</StyledTableCell>
+                        </StyledTableRow>
+                    ))}
+                    </TableBody>
+                </Table>
+                </TableContainer>
+            </CardContent>
+        </Card>
     </div>
   );
 }
