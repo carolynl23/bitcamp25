@@ -11,8 +11,8 @@ function App() {
 
   return (
     <>
-      <NavBar></NavBar>
-      <Events></Events>
+      <NavBar setRing={setRing}></NavBar>
+      <Events ring={ring}></Events>
       <div id="center">
         <input type="text" placeholder="Enter Score Here:"/>
         <br></br>

@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import EventTable from './EventTable'
 
-const n = 3;
+function getEventCount(ring){
+    return ring;
+}
 
-export default function Events(){
-    return ([...Array(n)].map((e, i) =>
+export default function Events({ring}){
+    return ([...Array(getEventCount(ring))].map((e, i) =>
         <>
-            <EventTable></EventTable>
+            <EventTable eventid={i + 1}></EventTable>
             <br></br>
         </>))
 }
