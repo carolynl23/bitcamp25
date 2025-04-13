@@ -10,7 +10,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import '../index.css'
 
-export default function NavBar() {
+export default function NavBar({setRing}) {
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen) => () => {
@@ -32,7 +32,7 @@ export default function NavBar() {
       <List>
         {['Ring 1', 'Ring 2', 'Ring 3'].map((text, index) => (
           <ListItem key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton onClick={() => setRing(index + 1)}>
               <ListItemText primary={text} />
             </ListItemButton>
           </ListItem>
